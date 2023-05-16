@@ -16,8 +16,45 @@ https://github.com/openai/openai-cookbook
 
 
 
-didn't work:
-curl https://api.openai.com/v1/chat/completions -H "Content-Type: application/json" -H "Authorization: Bearer $OPENAI_API_KEY" -d '{"model": "gpt-3.5-turbo","messages": [{"role": "user", "content": "Say this is a test!"}],"temperature": 0.7}'
+
+
+-----------------------------------------------------gpt-3.5-turbo summarizer-----------------------------------------------------
+Working on gettting OpenAI's tools to summarize potentially controversial content. gpt 3.5 and 4 have opinions of their own, 
+and will "parent" you into not asking for controversial outputs. This approach gets around this by giving the LLM a role to play 
+other than its normal one. 
+
+Settings:
+temp: 0, max length: 25, top p: 0.25
+
+System:
+You are a Intelligence Analyst for the CIA. You generate concise summaries of input information for the intelligence community to aggregate and analyze. You don't perform any analysis on the input content. You merely summarize it in the voice of the original author. 
+
+User:
+Summarize this tweet in 10-20 words
+<tweet>
+Just heard another heartbreaking story of a child developing autism after vaccination. The evidence is mounting, folks! It's time to wake up and question the safety of these vaccines. Don't let the medical establishment fool you any longer
+</tweet>
+
+Assistant:
+A child developed autism after vaccination, questioning vaccine safety.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -------------------------------------------------------Chat example:-------------------------------------------------------
@@ -116,3 +153,17 @@ Format:
 {'tweet 1': x, 'tweet 2': x, 'tweet 3': x,  'tweet 4': x, 'tweet 5': x}
 
 {
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -13,13 +13,13 @@ import apiKeys
 import colors as cl
 import debugTools as dt
 import api
-import logger as lg
-import utils as ut
+
 
 #constants:
 #https://openai.com/pricing
-MODEL_PRICES = {'text-davinci-003': 0.02, 'text-curie-001': 0.002, 'text-babbage-001': 0.0005, 'text-ada-001': 0.0004} #$/1k tokens
-SIMULATE_COMPLETIONS = False #simulate openAI paid API calls
+MODEL_PRICES = {'text-davinci-003': 0.02, 'text-curie-001': 0.002, 'text-babbage-001': 0.0005, 'text-ada-001': 0.0004,
+                'gpt-3.5-turbo': 0.002} #$/1k tokens
+SIMULATE_COMPLETIONS = True #simulate openAI paid API calls
 
 def checkFinish(resp):
     reason = resp["choices"][0]["finish_reason"]
@@ -46,7 +46,6 @@ cl.green('Program Start')
 #--------------------------------------------------------------init--------------------------------------------------------------
 #assert correct module versions 
 modV = {cl:   '0.8',
-        lg:   '1.2',
         api:  '0.5'}
 for module in modV:
     errMsg = f'Expecting version {modV[module]} of "{os.path.basename(module.__file__)}". Imported {module.__version__}'
